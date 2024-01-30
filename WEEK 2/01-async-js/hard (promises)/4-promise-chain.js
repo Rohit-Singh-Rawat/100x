@@ -33,5 +33,4 @@ function calculateTime(t1, t2, t3) {
         return (end - start)
     } )
 }
-console.log(calculateTime(1,2,3))
 module.exports = calculateTime;
