@@ -39,11 +39,92 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  
-  const app = express();
-  
-  app.use(bodyParser.json());
-  
-  module.exports = app;
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+app.use(bodyParser.json());
+
+const todos = [{
+  id: 1,
+  title: "To-Do",
+  description: "Make a to-do server using Express"
+},
+{
+  id: 2,
+  title: "File Server",
+  description: "Make a File System server using Express"
+}];
+
+
+
+app.get("/todos", (req, res) => {
+  res.status(200).json( todos );
+})
+
+
+
+app.get("/todos/:id", (req, res) => {
+  let id = req.params.id;
+  if (todos.some((todo) => todo.id == id)) {
+    res.status(200).json(todos.find((todo) => todo.id == id));
+  }
+  else {
+    res.status(404).json({ msg: "Not Found" })
+  }
+})
+
+
+
+app.post("/todos", (req, res) => {
+  let newTodo = {
+    id:  Math.floor(new Date().getTime() / 1000),
+    title: req.body.title,
+    description: req.body.description
+  };
+  todos.push(newTodo);
+  res.status(201).json({ id: newTodo.id })
+})
+
+
+
+app.put("/todos/:id", (req, res) => {
+  let id = req.params.id;
+  let index = todos.findIndex((todo)=> todo.id == id);
+  if (index == -1){
+    res.status(404).json({msg: "not found"})
+  }
+  else{
+    todos[index] = {
+      ...todos[index],
+      description:  req.body.description ,
+      title : req.body.title
+    }
+    res.status(200).json(todos[index])
+  }
+
+})
+
+
+
+app.delete("/todos/:id", (req, res) => {
+  let id = req.params.id;
+  let index = todos.findIndex((todo) => todo.id == id);
+  if (index == -1) {
+    res.status(404).json({ msg: "not found" })
+  }
+  else {
+    todos.splice(index, 1)
+    res.status(200).send("deleted")
+  }
+
+})
+
+app.use((req, res) => {
+  res.status(404).send();
+});
+app.listen(3000);
+
+
+module.exports = app;
