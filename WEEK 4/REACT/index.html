@@ -2,12 +2,51 @@
 <html>
 
 <head>
-  
+  <style>
+     body {
+  text-align: center;
+  padding-top: 10%; 
+}
+
+#todos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo {
+  border: 1px black solid;
+  max-width: 500px;
+  min-width: 200px  ;
+  word-wrap: break-word;
+  overflow: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+
+}
+.todo  * {
+  margin-bottom: 5px; 
+}
+
+.todo button:last-child {
+  margin-left: 10px;
+}
+.todo :nth-child(1)::before{
+  content:"Title: ";
+  font-weight: bold;
+}
+.todo :nth-child(2)::before{
+  content:"Description: ";
+  font-weight: bold;
+}
+
+
+  </style>
 </head>
 
 <body>
-  <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
-  <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
+  <input type="text" id="title" placeholder="Todo title" autofocus></input> <br /><br />
+  <input type="text" id="description" placeholder="Todo description" autofocus></input> <br /><br />
   <button onclick="addTodo()">Add todo</button>
   <br /> <br />
 
@@ -20,18 +59,69 @@
     let todoState = [];
     let oldTodoState = [];
 
+    function saveEdit(id){
+      const todo = document.getElementById(id);
+     const editTitle = todo.querySelector('input#title').value;
+const editDescription = todo.querySelector('input#desc').value;
+      console.log(editDescription)
+      let changed = false;
+      todoState.forEach((td)=>{
+        changed = !(td.title == editTitle && td.description == editDescription)
+        if (td.id==id ){
+          td.title = editTitle;
+          td.description = editDescription;
+        }
+      })
+      const btn = todo.children[2];
+      btn.innerText = "Edit";
+      btn.onclick = ()=>editTodo(id)
+      if(changed)
+      updateState(todoState);
+      else{
+        todo.children[1].innerHTML = editDescription;
+         todo.children[0].innerHTML= editTitle;
+      }
+      
+
+    }
+    function deleteTodo(id){
+      todoState = todoState.filter(td => td.id != id);
+      updateState(todoState)
+    }
+    function editTodo(id){
+      
+      const todo = document.getElementById(id);
+      const btn = todo.children[2];
+      btn.innerText = "Save";
+      btn.onclick= ()=>saveEdit(id)
+      
+      const titleDiv = todo.children[0];
+      const descDiv = todo.children[1];
+      titleDiv.innerHTML = `<input id="title" value="${titleDiv.innerHTML}" ></input>`
+      descDiv.innerHTML = `<input id="desc" value="${descDiv.innerHTML}" ></input>`
+      
+    }
+
     function addTodoToDom(todo) {
 
       const container = document.getElementById("todos");
       const todoDiv = document.createElement( "div" );
-
+      todoDiv.setAttribute('class', "todo")
       todoDiv.setAttribute('id',todo.id);
       const titleDiv = document.createElement("div");
       titleDiv.innerHTML = todo.title;
       const descriptionDiv = document.createElement("div");
       descriptionDiv.innerHTML = todo.description;
+      const deleteButton = document.createElement('button');
+      const editButton = document.createElement('button');
+      editButton.innerHTML = "Edit";
+      deleteButton.innerHTML = "Delete";
+      editButton.onclick = () => editTodo(todo.id)
+      deleteButton.onclick = () => deleteTodo(todo.id);
       todoDiv.appendChild(titleDiv)
       todoDiv.appendChild(descriptionDiv)
+      todoDiv.appendChild(editButton)
+      todoDiv.appendChild(deleteButton)
       container.appendChild(todoDiv)
       
     }
@@ -46,17 +136,14 @@
       
         const container = document.getElementById("todos");
       const todoElement = document.getElementById(oldTodo.id);
-      const todoDiv = document.createElement( "div" );
 
-      todoDiv.setAttribute('id',newTodo.id);
-      const titleDiv = document.createElement("div");
+      todoElement.setAttribute('id',newTodo.id);
+      const titleDiv = todoElement.children[0];
       titleDiv.innerHTML = newTodo.title;
-      const descriptionDiv = document.createElement("div");
+      const descriptionDiv = todoElement.children[1];
       descriptionDiv.innerHTML = newTodo.description;
-      todoDiv.appendChild(titleDiv)
-      todoDiv.appendChild(descriptionDiv)
       
-      todoElement.replaceWith(todoDiv);
+      
 
     }
 
@@ -107,6 +194,10 @@
     function addTodo() {
       const title = document.getElementById("title").value;
       const description = document.getElementById("description").value;
+      if (title.trim() === '' || description.trim() === ''){
+        alert("Please fill in both title and description fields");
+        return;
+      }
       todoState.push({
         title: title,
         description: description,
