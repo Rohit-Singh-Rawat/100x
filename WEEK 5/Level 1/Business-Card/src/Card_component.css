@@ -1,0 +1,63 @@
+.card{
+    max-width: 200px;
+    background-color: #1b1c22;
+    border: 0.2px rgb(22, 11, 37) solid;
+    border-radius: 7px;
+    font-family: "Inter", sans-serif;
+}
+.name{
+    text-align: center;
+    color:#F2F2F4;
+    margin-bottom: 0px;
+
+}
+.description{
+    font-size:x-small;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+.designation{
+    text-align: center;
+    color:rgb(123,108,101);
+    margin-top: 0px;
+
+}
+.info{
+    padding: 25px;
+    color:  hsla(0, 0%, 86%, 1);
+    padding-top: 0px;
+}
+.card  ul {
+    list-style-type: none;
+    text-align: left;
+    padding-left: 0px;
+    margin-top: 5px;
+
+}
+ul li{
+    font-size:x-small;
+}
+h4{
+    margin-bottom: 0px;
+}
+.socialLinks{
+    background-color: rgb(22,21,25) ;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0px 0px 7px 7px;    
+}
+.socialLinks button{
+    background-color: rgb(146,144,154);
+    border: none;
+    border-radius: 3px;
+    min-width: 20px;
+    padding: 5px;
+    
+}
+.socialLinks a{
+    text-decoration: none;
+    color: rgb(22,21,25) ;
+    font-weight:600;
+    font-size: smaller;
+}
