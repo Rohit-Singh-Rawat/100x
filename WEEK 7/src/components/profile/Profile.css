@@ -1,0 +1,84 @@
+.profile {
+	min-width: 300px;
+	width: 300px;
+	border-radius: 20px;
+	font-family: 'Kumbh Sans', sans-serif;
+	box-shadow: 0px 10px 30px hsl(185, 68%, 17%);
+	background-color: white;
+}
+.banner {
+	position: relative;
+	height: 140px;
+	border-radius: 20px 20px 0 0;
+	background: linear-gradient(90deg, #ff1f97 30%, #3113f5);
+}
+.userPhoto {
+	display: flex;
+	justify-content: center;
+}
+.userPhoto img {
+	border: 7px solid rgb(241, 231, 231);
+	position: relative;
+	top: -50px;
+	align-content: center;
+	height: 120px;
+	width: 120px;
+	border-radius: 50%;
+}
+.userInfo {
+	text-align: center;
+}
+.name {
+	font-weight: bold;
+	font-size: 1.3rem;
+	text-align: center;
+	padding: 10px 8px 0px 5px;
+}
+.age {
+	font-size: 1.2rem;
+	font-weight: 400;
+	color: grey;
+	text-align: center;
+	padding-top: 10px;
+}
+.userPlace {
+	font-weight: 400;
+	color: grey;
+	font-size: 1rem;
+	text-align: center;
+	padding: 12px;
+}
+
+.quantity {
+	font-weight: bold;
+	font-size: 1.1rem;
+	text-align: center;
+}
+.parameter {
+	font-size: 1rem;
+	font-weight: 400;
+	color: grey;
+	text-align: center;
+	padding-top: 5px;
+}
+.social-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	border-top: solid #d7dcde 3px;
+
+	justify-content: space-around;
+	align-self: end;
+}
+.social > * {
+	display: block;
+	text-align: center;
+}
+.social {
+	padding: 15px 0 10px 0;
+}
+.social:not(:nth-of-type(1)) {
+	border-left: 3px solid #d7dcde;
+}
+.extra {
+	padding: 0 10px 10px 10px;
+}
