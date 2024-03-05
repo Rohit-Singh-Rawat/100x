@@ -2,7 +2,7 @@ import React from 'react';
 import speaker from '../assets/Img/speaker.png';
 const Header = () => {
 	return (
-		<div className='flex justify-between m-2 p-3 border-b-[1px] w-full'>
+		<div className='flex fixed lg:sticky justify-between px-[32px] py-[12px] border-b-[1px] w-full'>
 			<div className='flex items-center grow'>
 				<h5 className='text-xl font-medium'>Payouts</h5>
 				<svg
