@@ -13,7 +13,7 @@ const Overview = () => {
 						xmlns='http://www.w3.org/2000/svg'
 						viewBox='0 0 24 24'
 						stroke='currentColor'
-						stroke-width='0'
+						strokeWidth='0'
 						className='w-5 h-5 font-bold'
 					>
 						<path

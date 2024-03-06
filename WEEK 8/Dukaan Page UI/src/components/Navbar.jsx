@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import NavbarItem from './NavbarItem';
 import homeImg from '../assets/Img/home.png';
 import ordersImg from '../assets/Img/orders.png';
@@ -13,6 +13,7 @@ import appearanceImg from '../assets/Img/appearance.png';
 import pluginsImg from '../assets/Img/plugins.png';
 import photo from "../assets/Img/photo.jpg"
 import wallet from "../assets/Img/wallet.svg"
+import { NavbarContext } from '../App';
 
 const navbarItems = [
 	{ img: homeImg , text: 'Home' },
@@ -28,15 +29,47 @@ const navbarItems = [
 	{ img: pluginsImg , text: 'Plugins' },
 ];
 
-const Navbar = () => {
 
+const Navbar = () => {
+	const {navbarOn, setNavbarOn} = useContext(NavbarContext);
 	return (
 		<aside
 			id='default-sidebar'
-			className='fixed lg:sticky left-0 top-0 z-40 h-[100dvh] w-full overflow-hidden transition-all duration-300 lg:max-w-[224px] pointer-events-none opacity-0 lg:opacity-100 lg:pointer-events-auto'
+			className={`fixed lg:sticky left-0 top-0 z-40 h-[100dvh] w-full overflow-hidden transition-all duration-300 lg:max-w-[224px] ${
+				navbarOn ? ' ' : 'pointer-events-none opacity-0'
+			}  lg:opacity-100 lg:pointer-events-auto`}
 			aria-label='Sidebar'
 		>
-			<div className=' relative mr-auto transition-transform duration-300 ease-in-out flex flex-col max-w-[224px] px-2 py-4 h-[100dvh] gap-4 bg-[#1E2640] justify-between -translate-x-full lg:translate-x-0'>
+			<div
+				class='absolute inset-0 cursor-pointer transition-opacity bg-gray-500 bg-opacity-75'
+				onClick={() => {
+					setNavbarOn((e) => !e);
+				}}
+			></div>
+			<button
+				class='fixed top-5 right-4 lg:hidden'
+				onClick={() => {
+					setNavbarOn((e) => !e);
+				}}
+			>
+				<svg
+					stroke='currentColor'
+					fill='currentColor'
+					stroke-width='0'
+					viewBox='0 0 512 512'
+					class='text-white text-3xl'
+					height='1em'
+					width='1em'
+					xmlns='http://www.w3.org/2000/svg'
+				>
+					<path d='M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm52.7 283.3L256 278.6l-52.7 52.7c-6.2 6.2-16.4 6.2-22.6 0-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3l52.7-52.7-52.7-52.7c-3.1-3.1-4.7-7.2-4.7-11.3 0-4.1 1.6-8.2 4.7-11.3 6.2-6.2 16.4-6.2 22.6 0l52.7 52.7 52.7-52.7c6.2-6.2 16.4-6.2 22.6 0 6.2 6.2 6.2 16.4 0 22.6L278.6 256l52.7 52.7c6.2 6.2 6.2 16.4 0 22.6-6.2 6.3-16.4 6.3-22.6 0z'></path>
+				</svg>
+			</button>
+			<div
+				className={` relative mr-auto transition-transform duration-300 ease-in-out flex flex-col max-w-[224px] px-2 py-4 h-[100dvh] gap-4 bg-[#1E2640] justify-between ${
+					navbarOn ? 'translate-x-0 ' : '-translate-x-full'
+				} lg:translate-x-0 `}
+			>
 				<div className=' w-full flex flex-col gap-6 items-center'>
 					<div className='flex gap-3 text-[#FFFFFF] items-center w-fit mx-auto'>
 						<div>
@@ -46,7 +79,7 @@ const Navbar = () => {
 								className='h-10 border-x-[6px] rounded border-[#F8F8F8]'
 							/>
 						</div>
-						<div className='class="flex flex-col gap-1 w-[108px] justify-center"'>
+						<div className='flex flex-col gap-1 w-[108px] justify-center'>
 							<h3 className='leading-[22px] font-medium text-[15px]'>Suguru</h3>
 							<a
 								href='/'
@@ -74,6 +107,7 @@ const Navbar = () => {
 							<NavbarItem
 								img={item.img}
 								text={item.text}
+								key={item.text}
 							></NavbarItem>
 						))}
 					</div>

@@ -3,11 +3,23 @@ const RevenueCard = ({ text, amount, orders, nextPaymentDate }) => {
 	return (
 		<div
 			className={`flex-grow rounded-[8px] ${
-				nextPaymentDate ? 'bg-[#146EB4] text-white' : 'bg-white'
+				nextPaymentDate
+					? 'bg-[#146EB4] text-white shadow-sm'
+					: 'bg-white p-5  rounded-[8px] gap-4 flex flex-col shadow-sm h-fit min-w-[300px] '
 			} `}
 		>
-			<div className='p-5  rounded-[8px] gap-4 flex flex-col shadow-sm h-fit min-w-[300px]'>
-				<div className='flex items-center gap-3 text-[#4D4D4D]'>
+			<div
+				className={`${
+					nextPaymentDate
+						? 'p-5  rounded-[8px] gap-4 flex flex-col shadow-sm h-fit min-w-[300px]'
+						: 'flex flex-col  gap-4'
+				}`}
+			>
+				<div
+					className={`flex items-center gap-3 ${
+						nextPaymentDate ? 'text-white' : 'text-[#4D4D4D] '
+					}`}
+				>
 					<h5>{text}</h5>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
@@ -28,15 +40,19 @@ const RevenueCard = ({ text, amount, orders, nextPaymentDate }) => {
 				<div className='flex justify-between items-center'>
 					<p className='text-3xl font-medium'>₹ {amount}</p>
 					{orders ? (
-						<p className='text-base font-mendium underline flex items-center text-[#146EB4]'>
+						<p
+							className={`text-base font-medium underline flex items-center ${
+								nextPaymentDate ? 'text-white' : 'text-[#146EB4]'
+							}`}
+						>
 							{orders} Orders{' '}
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								fill='none'
-								viewBox='0 0 24 24'
-								strokeWidth={1.5}
+								viewBox='0 0 20 20'
+								strokeWidth={2.8}
 								stroke='currentColor'
-								className='w-4 h-4'
+								className='w-[18px] h-[18px]'
 							>
 								<path
 									strokeLinecap='round'
