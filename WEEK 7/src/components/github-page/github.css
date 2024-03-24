@@ -1,0 +1,13 @@
+
+.card{
+    height: 480px;
+    width: 280px;
+    border-radius: 18px;
+    border: 1px grey solid;
+}
+.imgz{
+	height: 220px;
+	width: 220px;
+    border-radius: 100%;
+
+}
