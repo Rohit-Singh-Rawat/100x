@@ -4,12 +4,13 @@ import Profile from './components/profile/Profile';
 import BackgroundColorChanger from './components/BackgroundColorChanger/BackgroundColorChanger';
 import ParaGenerator from './components/ParaGenerator/ParaGenerator';
 import Github from './components/github-page/Github';
+import Login from './components/OTP Login/Login';
 function App() {
 	const [count, setCount] = useState(0);
 
 	return (
 		<>
-			<Github></Github>
+			<Login></Login>
 		</>
 	);
 }
