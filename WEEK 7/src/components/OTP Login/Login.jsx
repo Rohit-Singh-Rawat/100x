@@ -60,7 +60,7 @@ const LoginComp = ({ onClick, number, setNumber }) => {
 						max='9999999999'
 						value={number}
 						onChange={(e) => {
-							if (e.target.value.length <= 9) {
+							if (e.target.value.length <= 10) {
 								setNumber(e.target.value);
 							}
 						}}
@@ -82,7 +82,7 @@ const LoginComp = ({ onClick, number, setNumber }) => {
 				</div>
 			</div>
 			<div className='flex justify-center  mt-10'>
-				{number.length >= 9 ? (
+				{number.length >= 10 ? (
 					<button
 						className='bg-gradient-to-r  hover:scale-105 transition duration-300 from-[#0959E4] to-[#062795] text-center py-2 px-16 rounded-md text-white font-semibold text-lg'
 						onClick={onClick}
