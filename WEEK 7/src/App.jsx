@@ -5,12 +5,13 @@ import BackgroundColorChanger from './components/BackgroundColorChanger/Backgrou
 import ParaGenerator from './components/ParaGenerator/ParaGenerator';
 import Github from './components/github-page/Github';
 import Login from './components/OTP Login/Login';
+import BirthDayCard from './components/BirthDayCard/BirthDayCard';
 function App() {
 	const [count, setCount] = useState(0);
 
 	return (
 		<>
-			<Login></Login>
+			<BirthDayCard></BirthDayCard>
 		</>
 	);
 }
