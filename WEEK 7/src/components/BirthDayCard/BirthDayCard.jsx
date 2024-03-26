@@ -3,6 +3,7 @@ import img1 from '../../assets/BaackgroundImgs/1.jpg';
 import img2 from '../../assets/BaackgroundImgs/2.jpg';
 import img3 from '../../assets/BaackgroundImgs/3.jpg';
 import img4 from '../../assets/BaackgroundImgs/4.jpg';
+import { Link } from 'react-router-dom';
 
 const BirthDayCard = () => {
 	const [name, setName] = useState('');
@@ -39,21 +40,34 @@ const BirthDayCard = () => {
 	];
 	return (
 		<div className='flex flex-col justify-center overflow-x-hidden  bg-black  min-h-[100vh] items-center'>
+			<Link
+				to={'/'}
+				class='absolute top-10 left-10 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800'
+			>
+				<span class='relative text-2xl text-center font-semibold px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+					⇚ Back
+				</span>
+			</Link>
 			<div className='mt-[30vh] mb-[20vh] flex gap-10'>
 				<input
 					type='text'
 					placeholder='Enter Your Name'
-                    onChange={(e)=>{
-                        setShowCards(false);
-                        setName(e.target.value)
-                    }}
-                    className='border-white border-2 bg-transparent p-2 px-4 rounded-lg text-blue-500 outline-none focus:border-blue-500'
+					onChange={(e) => {
+						setShowCards(false);
+						setName(e.target.value);
+					}}
+					className='border-white border-2 bg-transparent p-2 px-4 rounded-lg text-blue-500 outline-none focus:border-blue-500'
 				/>
-				<button onClick={()=>{
-                    if(name.trim() !=''){
-                        setShowCards(true)
-                    }
-                }} className='bg-transparent border-2 active:bg-blue-500 active:text-white active:border-white hover:border-blue-500 hover:text-blue-500 border-white text-white p-2 px-4 rounded-lg'>Generate</button>
+				<button
+					onClick={() => {
+						if (name.trim() != '') {
+							setShowCards(true);
+						}
+					}}
+					className='bg-transparent border-2 active:bg-blue-500 active:text-white active:border-white hover:border-blue-500 hover:text-blue-500 border-white text-white p-2 px-4 rounded-lg'
+				>
+					Generate
+				</button>
 			</div>
 			{showCards ? (
 				<div className='flex flex-col m-10 gap-32'>

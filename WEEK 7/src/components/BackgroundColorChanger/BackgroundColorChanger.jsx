@@ -14,7 +14,7 @@ const BackgroundColorChanger = () => {
 	}
 	return (
 		<div
-			className='background'
+			className='background mt-20'
 			style={{ background: color }}
 		>
 			<div id='color-picker'>

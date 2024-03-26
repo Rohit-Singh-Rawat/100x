@@ -4,17 +4,25 @@
     width:950px;
     align-items: center; 
 	font-family: 'Kumbh Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    
 }
 .paraGenerator > h1{
     margin-top: 130px;
     font-size: 40px;
+    color:bisque;
 }
-.paraGenerator >input{
-    width: 50%;
+.paraGenerator>.inputs >input{
     padding: 15px;
+    background:transparent;
+    color: bisque;
+    border-radius: 20px;
+    border: blue 2px solid;
     font-size: larger;
 }
-.paraGenerator > button{
+.paraGenerator>.inputs > button{
     margin-left: 30px;
     font-size: medium;
     color: white;
@@ -26,6 +34,7 @@
 .paraDiv{
     text-align: left;
     background-color: #F8F8F8;
+    border-radius: 20px;
     padding: 30px;
     margin: 20px;
 }

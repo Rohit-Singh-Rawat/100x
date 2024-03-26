@@ -20,16 +20,24 @@ const ParaGenerator = () => {
         setPara(para);
     }
   return (
-    <div className='paraGenerator'>
-        <h1>Para Generator</h1>
-
-        <input type="number" placeholder='Enter Number of Words' onChange={(e)=>setNumberOfWords(e.target.value)}/>
-        <button onClick={generatePara}>Generate</button>
-        <div className='paraDiv'>
-            <p>{para}</p>
-        </div>
-    </div>
-  )
+		<div className='paraGenerator'>
+			<h1>Para Generator</h1>
+			<div className='inputs'>
+				<input
+					type='number'
+					placeholder='Enter Number of Words'
+					onChange={(e) => setNumberOfWords(e.target.value)}
+				/>
+				<button onClick={generatePara}>Generate</button>
+			</div>
+            {
+                para?<div className='paraDiv'>
+				<p>{para}</p>
+			</div>:null
+            }
+			
+		</div>
+	);
 }
 
 export default ParaGenerator

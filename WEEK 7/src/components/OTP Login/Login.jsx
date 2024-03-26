@@ -1,10 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 	const [showLogin, setShowLogin] = useState(true);
 	const [number, setNumber] = useState('');
 	return (
 		<div className='bg-[#020203] w-[100vw] h-[100vh] flex justify-center items-center'>
+			<Link
+				to={'/'}
+				class='absolute top-10 left-10 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800'
+			>
+				<span class='relative text-2xl text-center font-semibold px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+					⇚ Back
+				</span>
+			</Link>
 			<div className='bg-[#16181F] w-[60%] h-[67%] rounded-2xl flex flex-col justify-start p-10 items-center'>
 				<div>
 					<div className='text-center flex flex-col gap-2'>
@@ -64,9 +73,9 @@ const LoginComp = ({ onClick, number, setNumber }) => {
 						htmlFor={'number'}
 						className={` ${
 							isFocused
-								? 'text-sm -translate-y-[21px] text-[#8f98b2] font-semibold	'
-								: 'text-lg  '
-						} text-[#4b5166] bottom-[50%] translate-y-[50%] left-[5%] absolute transition-all ease-in duration-200  px-1 bg-[#16181F]  leading-3 `}
+								? 'text-sm -translate-y-[20px] text-[#8f98b2] font-semibold	'
+								: 'text-lg  translate-y-[50%]'
+						} text-[#4b5166] bottom-[50%]  left-[5%] absolute transition-all ease-in duration-200  px-1 bg-[#16181F]  leading-3 `}
 					>
 						Enter mobile number
 					</label>
